@@ -24,6 +24,16 @@ function getObjectValues(obj)
     return ret;
 }
 
+function getObjectKeys(obj)
+{
+    const ret = [];
+    for (let prop in obj)
+    {
+        ret.push(prop);
+    }
+    return ret;
+}
+
 function arrFromRange(min, max)
 {
     const ret = [];
@@ -64,13 +74,22 @@ function sumArr(arr)
     return arr.reduce((curr, tot) => curr + tot, 0);
 }
 
+function median(arr)  
+{
+    const mid = Math.floor(arr.length / 2),
+    nums = [...arr].sort((a, b) => a - b);
+    return arr.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+};
+
 module.exports = {
     getFileContent,
     getLineDelimitedFileContent,
+    getObjectKeys,
     getObjectValues,
     arrFromRange,
     flipObject,
     distinct,
     objectToKeyValues,
-    sumArr
+    sumArr,
+    median
 }

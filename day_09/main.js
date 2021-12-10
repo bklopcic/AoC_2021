@@ -22,7 +22,7 @@ console.log(basinSizes.sort( (a,b) => a -b)[basinSizes.length-3] * basinSizes.so
 function findBasin(map, row, col, beenChecked)
 {
     let basin = [];
-    if (typeof map[row] === 'undefined' || typeof map[row][col] === 'undefined' || map[row][col] >= 9 || beenChecked.includes(`${row},${col}`))
+    if (map[row][col] >= 9 || beenChecked.includes(`${row},${col}`))
     {
         return basin;
     }
