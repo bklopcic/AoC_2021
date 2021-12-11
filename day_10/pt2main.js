@@ -21,9 +21,9 @@ let scores = {
     '>' : 4
 };
 
-let closures = ['}', '>', ')', ']'];
+let closures = utils.getObjectKeys(scores);
 
-console.log(utils.median(content.map( o => validateChunk(o.split('')) ).filter(o => o != null).map( o => o.reverse().reduce( (tot, curr) => tot * 5 + scores[braceMatch[curr]] , 0))));
+console.log(utils.median(content.map( o => validateChunk(o.split('')) ).filter(o => o != null).map( o => o.reverse().reduce( (tot, brace) => tot * 5 + scores[braceMatch[brace]] , 0))));
 
 function validateChunk(chunk)
 {    
