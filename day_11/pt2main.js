@@ -71,7 +71,7 @@ function getNeighbors(coord, map)
         {x:-1, y:1}, {x:0, y:1}, {x:1, y:1}
     ];
 
-    let neighbors = deltas.filter( delta => typeof map[coord.y + delta.y] !== 'undefined' && typeof map[coord.y + delta.y][coord.x + delta.x] !== 'undefined')
+    let neighbors = deltas.filter( delta => map[coord.y + delta.y] && map[coord.y + delta.y][coord.x + delta.x])
     .map( delta => map[coord.y + delta.y][coord.x + delta.x]);
 
     return neighbors;
