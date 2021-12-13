@@ -86,6 +86,11 @@ function copyObj(obj)
     return JSON.parse(JSON.stringify(obj));
 }
 
+function copyArr(arr)
+{
+    return arr.map(o => o);
+}
+
 module.exports = {
     getFileContent,
     getLineDelimitedFileContent,
@@ -97,5 +102,6 @@ module.exports = {
     objectToKeyValues,
     sumArr,
     median,
-    copyObj
+    copyObj,
+    copyArr
 }
