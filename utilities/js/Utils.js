@@ -71,7 +71,7 @@ function objectToKeyValues(obj)
 
 function sumArr(arr)
 {
-    return arr.reduce((curr, tot) => curr + tot, 0);
+    return arr.reduce((tot, curr) => tot + curr, 0);
 }
 
 function median(arr)  
@@ -91,6 +91,20 @@ function copyArr(arr)
     return arr.map(o => o);
 }
 
+function strToCoord(str)
+{
+    const split = str.split(',');
+    return {
+        x: Number(split[0]),
+        y: Number(split[1])
+    };
+}
+
+function coordToStr(coord)
+{
+    return `${coord.x},${coord.y}`;
+}
+
 module.exports = {
     getFileContent,
     getLineDelimitedFileContent,
@@ -103,5 +117,7 @@ module.exports = {
     sumArr,
     median,
     copyObj,
-    copyArr
+    copyArr,
+    strToCoord,
+    coordToStr
 }
