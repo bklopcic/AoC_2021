@@ -1,7 +1,7 @@
 const utils = require('../utilities/js/Utils.js');
 
-let content = utils.getLineDelimitedFileContent('./sample.txt');
-//let content = utils.getLineDelimitedFileContent('./input.txt');
+//let content = utils.getLineDelimitedFileContent('./sample.txt');
+let content = utils.getLineDelimitedFileContent('./input.txt');
 
 let sequence = content[0];
 
@@ -34,32 +34,29 @@ for (let i = 0; i < 10; i++)
     sequence = arr.map(o => o.char).join('');
 }
 
-console.log(sequence);
-console.log(maxCount(sequence));
-console.log(minCount(sequence));
+console.log(maxCount(sequence)[0][1] - minCount(sequence)[0][1]);
 
 function maxCount(input) {
-    const {max, ...counts} = (input || "").split("").reduce(
-    (a, c) => {
-        a[c] = a[c] ? a[c] + 1 : 1;
-        a.max = a.max < a[c] ? a[c] : a.max;
-        return a;
-    },
-    { max: 0 }
+    const {max, ...counts} = (input || '').split('').reduce(
+        (a, c) => {
+            a[c] = a[c] ? a[c] + 1 : 1;
+            a.max = a.max < a[c] ? a[c] : a.max;
+            return a;
+        },
+        { max: 0 }
     );
 
     return Object.entries(counts).filter(([k, v]) => v === max);
 }
 
 function minCount(input) {
-    const {min, ...counts} = (input || "").split("").reduce(
-    (a, c) => {
-        a[c] = a[c] ? a[c] + 1 : 1;
-        a.min = a.min > a[c] ? a[c] : a.min;
-        return a;
-    },
-    { min: 0 }
+    const {...counts} = (input || '').split('').reduce(
+        (a, c) => {
+            a[c] = a[c] ? a[c] + 1 : 1;
+            return a;
+        },
+        {}
     );
-    
+    const min = Math.min(...utils.getObjectValues(counts));
     return Object.entries(counts).filter(([k, v]) => v === min);
 }
