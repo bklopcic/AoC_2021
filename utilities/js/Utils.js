@@ -105,6 +105,42 @@ function coordToStr(coord)
     return `${coord.x},${coord.y}`;
 }
 
+function createGrid(rowCount, colCount, value)
+{
+    if (typeof value === 'undefined')
+    {
+        value = 0;
+    }
+    let grid = [];
+    for (let i = 0; i < rowCount; i++)
+    {
+        grid.push([]);
+        for (let j = 0; j < colCount; j++)
+        {
+            grid[i][j] = value;
+        }
+    }
+    return grid;
+}
+
+function prettyPrint(obj)
+{
+    console.log(JSON.stringify(obj, null, 2));
+}
+
+function hexToBinary(hex){
+    return hex.split('').map(i => parseInt(i, 16).toString(2).padStart(4, '0')).join('');
+}
+
+function binaryToDecimal(bin)
+{
+    if (Array.isArray(bin))
+    {
+        bin = bin.map(o => o.toString()).join('');
+    }
+    return parseInt(bin,2);
+}
+
 module.exports = {
     getFileContent,
     getLineDelimitedFileContent,
@@ -119,5 +155,9 @@ module.exports = {
     copyObj,
     copyArr,
     strToCoord,
-    coordToStr
+    coordToStr,
+    createGrid,
+    prettyPrint,
+    hexToBinary,
+    binaryToDecimal
 }
