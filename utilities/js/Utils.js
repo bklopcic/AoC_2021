@@ -141,6 +141,15 @@ function binaryToDecimal(bin)
     return parseInt(bin,2);
 }
 
+
+function checkInBounds(coord, topLeft, botRight)
+{
+    return coord.x >= topLeft.x &&
+    coord.x <= botRight.x &&
+    coord.y <= topLeft.y &&
+    coord.y >= botRight.y;
+}
+
 module.exports = {
     getFileContent,
     getLineDelimitedFileContent,
@@ -159,5 +168,6 @@ module.exports = {
     createGrid,
     prettyPrint,
     hexToBinary,
-    binaryToDecimal
+    binaryToDecimal,
+    checkInBounds
 }
