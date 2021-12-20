@@ -74,6 +74,13 @@ function sumArr(arr)
     return arr.reduce((tot, curr) => tot + curr, 0);
 }
 
+function arrEquals(a, b) {
+    return Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index]);
+  }
+
 function median(arr)  
 {
     const mid = Math.floor(arr.length / 2),
@@ -169,5 +176,6 @@ module.exports = {
     prettyPrint,
     hexToBinary,
     binaryToDecimal,
-    checkInBounds
+    checkInBounds,
+    arrEquals
 }
